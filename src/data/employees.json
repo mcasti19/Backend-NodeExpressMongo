@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Juan",
+    "last_name": "Pérez",
+    "age": 25,
+    "email": "juan.perez@example.com",
+    "phone": "1235567890",
+    "position": "Desarrollador",
+    "department": "Tecnología",
+    "hireDate": "2020-01-01T00:00:00.000Z"
+  },
+  {
+    "name": "María",
+    "last_name": "González",
+    "age": 30,
+    "email": "maria.gonzalez@example.com",
+    "phone": "98176543210",
+    "position": "Diseñadora",
+    "department": "Diseño",
+    "hireDate": "2019-06-01T00:00:00.000Z"
+  },
+  {
+    "name": "Pedro",
+    "last_name": "Martínez",
+    "age": 35,
+    "email": "pedro.martinez@example.com",
+    "phone": "5551214567",
+    "position": "Gerente",
+    "department": "Administración",
+    "hireDate": "2018-01-01T00:00:00.000Z"
+  },
+  {
+    "name": "Ana",
+    "last_name": "Rodríguez",
+    "age": 28,
+    "email": "ana.rodriguez@example.com",
+    "phone": "7657321098",
+    "position": "Asistente",
+    "department": "Recursos Humanos",
+    "hireDate": "2020-03-01T00:00:00.000Z"
+  },
+  {
+    "name": "Carlos",
+    "last_name": "Hernández",
+    "age": 32,
+    "email": "carlos.hernandez@example.com",
+    "phone": "3210887654",
+    "position": "Ingeniero",
+    "department": "Ingeniería",
+    "hireDate": "2019-09-01T00:00:00.000Z"
+  },
+  {
+    "name": "Sofía",
+    "last_name": "García",
+    "age": 29,
+    "email": "sofia.garcia@example.com",
+    "phone": "6544210987",
+    "position": "Analista",
+    "department": "Análisis",
+    "hireDate": "2020-06-01T00:00:00.000Z"
+  },
+  {
+    "name": "Luis",
+    "last_name": "Díaz",
+    "age": 36,
+    "email": "luis.diaz@example.com",
+    "phone": "9876546210",
+    "position": "Director",
+    "department": "Dirección",
+    "hireDate": "2017-01-01T00:00:00.000Z"
+  },
+  {
+    "name": "Elena",
+    "last_name": "Sánchez",
+    "age": 27,
+    "email": "elena.sanchez@example.com",
+    "phone": "7654321098",
+    "position": "Asistente",
+    "department": "Recursos Humanos",
+    "hireDate": "2020-09-01T00:00:00.000Z"
+  },
+  {
+    "name": "Miguel",
+    "last_name": "López",
+    "age": 33,
+    "email": "miguel.lopez@example.com",
+    "phone": "3218987654",
+    "position": "Ingeniero",
+    "department": "Ingeniería",
+    "hireDate": "2019-03-01T00:00:00.000Z"
+  },
+  {
+    "name": "Isabel",
+    "last_name": "Gómez",
+    "age": 31,
+    "email": "isabel.gomez@example.com",
+    "phone": "6540210987",
+    "position": "Analista",
+    "department": "Análisis",
+    "hireDate": "2020-12-01T00:00:00.000Z"
+  },
+  {
+    "name": "Francisco",
+    "last_name": "Martín",
+    "age": 38,
+    "email": "francisco.martin@example.com",
+    "phone": "98765413210",
+    "position": "Gerente",
+    "department": "Administración",
+    "hireDate": "2016-01 -01T00:00:00.000Z"
+  },
+  {
+    "name": "Valeria",
+    "last_name": "Torres",
+    "age": 26,
+    "email": "valeria.torres@example.com",
+    "phone": "1232567890",
+    "position": "Desarrolladora",
+    "department": "Tecnología",
+    "hireDate": "2021-02-01T00:00:00.000Z"
+  },
+  {
+    "name": "Javier",
+    "last_name": "Ramírez",
+    "age": 34,
+    "email": "javier.ramirez@example.com",
+    "phone": "9876540210",
+    "position": "Diseñador",
+    "department": "Diseño",
+    "hireDate": "2018-05-01T00:00:00.000Z"
+  },
+  {
+    "name": "Claudia",
+    "last_name": "Mendoza",
+    "age": 30,
+    "email": "claudia.mendoza@example.com",
+    "phone": "5551234567",
+    "position": "Asistente",
+    "department": "Recursos Humanos",
+    "hireDate": "2020-04-01T00:00:00.000Z"
+  },
+  {
+    "name": "Andrés",
+    "last_name": "Cruz",
+    "age": 37,
+    "email": "andres.cruz@example.com",
+    "phone": "3210987654",
+    "position": "Director",
+    "department": "Dirección",
+    "hireDate": "2015-11-01T00:00:00.000Z"
+  },
+  {
+    "name": "Patricia",
+    "last_name": "Vargas",
+    "age": 29,
+    "email": "patricia.vargas@example.com",
+    "phone": "6543210987",
+    "position": "Analista",
+    "department": "Análisis",
+    "hireDate": "2021-01-01T00:00:00.000Z"
+  },
+  {
+    "name": "Fernando",
+    "last_name": "Salazar",
+    "age": 40,
+    "email": "fernando.salazar@example.com",
+    "phone": "9876543210",
+    "position": "Gerente",
+    "department": "Administración",
+    "hireDate": "2014-03-01T00:00:00.000Z"
+  },
+  {
+    "name": "Gabriela",
+    "last_name": "Ríos",
+    "age": 24,
+    "email": "gabriela.rios@example.com",
+    "phone": "1234567890",
+    "position": "Desarrolladora",
+    "department": "Tecnología",
+    "hireDate": "2022-07-01T00:00:00.000Z"
+  }
+]

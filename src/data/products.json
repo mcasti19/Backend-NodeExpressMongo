@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Producto 1",
+    "description": "Este es un producto de prueba",
+    "price": 10.99,
+    "img_url": "https://picsum.photos/200/300",
+    "status": true,
+    "stock": 10,
+    "category": "Electrónica",
+    "tags": ["tecnología", "gadgets"]
+  },
+  {
+    "title": "Producto 2",
+    "description": "Este es otro producto de prueba",
+    "price": 5.99,
+    "img_url": "https://picsum.photos/200/301",
+    "status": true,
+    "stock": 20,
+    "category": "Ropa",
+    "tags": ["moda", "vestir"]
+  },
+  {
+    "title": "Producto 3",
+    "description": "Este es un producto de prueba más",
+    "price": 7.99,
+    "img_url": "https://picsum.photos/200/302",
+    "status": true,
+    "stock": 15,
+    "category": "Juguetes",
+    "tags": ["diversión", "juegos"]
+  },
+  {
+    "title": "Producto 4",
+    "description": "Este es un producto de prueba con imagen",
+    "price": 12.99,
+    "img_url": "https://picsum.photos/200/303",
+    "status": true,
+    "stock": 25,
+    "category": "Electrónica",
+    "tags": ["tecnología", "gadgets"]
+  },
+  {
+    "title": "Producto 5",
+    "description": "Este es otro producto de prueba con imagen",
+    "price": 9.99,
+    "img_url": "https://picsum.photos/200/304",
+    "status": true,
+    "stock": 30,
+    "category": "Ropa",
+    "tags": ["moda", "vestir"]
+  },
+  {
+    "title": "Producto 6",
+    "description": "Este es un producto de prueba más con imagen",
+    "price": 11.99,
+    "img_url": "https://picsum.photos/200/305",
+    "status": true,
+    "stock": 20,
+    "category": "Juguetes",
+    "tags": ["diversión", "juegos"]
+  },
+  {
+    "title": "Producto 7",
+    "description": "Este es un producto de prueba con imagen y tags",
+    "price": 14.99,
+    "img_url": "https://picsum.photos/200/306",
+    "status": true,
+    "stock": 35,
+    "category": "Electrónica",
+    "tags": ["tecnología", "gadgets", "innovación"]
+  },
+  {
+    "title": "Producto 8",
+    "description": "Este es otro producto de prueba con imagen y tags",
+    "price": 10.99,
+    "img_url": "https://picsum.photos/200/307",
+    "status": true,
+    "stock": 40,
+    "category": "Ropa",
+    "tags": ["moda", "vestir", "tendencias"]
+  },
+  {
+    "title": "Producto 9",
+    "description": "Este es un producto de prueba más con imagen y tags",
+    "price": 12.99,
+    "img_url": "https://picsum.photos/200/308",
+    "status": true,
+    "stock": 45,
+    "category": "Juguetes",
+    "tags": ["diversión", "juegos", "entretenimiento"]
+  },
+  {
+    "title": "Producto 10",
+    "description": "Este es un producto de prueba con imagen y tags",
+    "price": 15.99,
+    "img_url": "https://picsum.photos/200/309",
+    "status": true,
+    "stock": 50,
+    "category": "Electrónica",
+    "tags": ["tecnología", "gadgets", "innovación", "futuro"]
+  },
+  {
+    "title": "Producto 11",
+    "description": "Este es otro producto de prueba con imagen y tags",
+    "price": 11.99,
+    "img_url": "https://picsum.photos/200/310",
+    "status": true,
+    "stock": 55,
+    "category": "Ropa",
+    "tags": ["moda", "vest ir", "estilo"]
+  },
+  {
+    "title": "Producto 12",
+    "description": "Este es un producto de prueba más con imagen y tags",
+    "price": 8.99,
+    "img_url": "https://picsum.photos/200/311",
+    "status": true,
+    "stock": 60,
+    "category": "Juguetes",
+    "tags": ["diversión", "juegos", "niños"]
+  },
+  {
+    "title": "Producto 13",
+    "description": "Este es un producto de prueba con imagen y tags",
+    "price": 13.99,
+    "img_url": "https://picsum.photos/200/312",
+    "status": true,
+    "stock": 65,
+    "category": "Electrónica",
+    "tags": ["tecnología", "gadgets", "accesorios"]
+  },
+  {
+    "title": "Producto 14",
+    "description": "Este es otro producto de prueba con imagen y tags",
+    "price": 6.99,
+    "img_url": "https://picsum.photos/200/313",
+    "status": true,
+    "stock": 70,
+    "category": "Ropa",
+    "tags": ["moda", "vestir", "casual"]
+  },
+  {
+    "title": "Producto 15",
+    "description": "Este es un producto de prueba más con imagen y tags",
+    "price": 9.49,
+    "img_url": "https://picsum.photos/200/314",
+    "status": true,
+    "stock": 75,
+    "category": "Juguetes",
+    "tags": ["diversión", "juegos", "educativos"]
+  },
+  {
+    "title": "Producto 16",
+    "description": "Este es un producto de prueba con imagen y tags",
+    "price": 14.49,
+    "img_url": "https://picsum.photos/200/315",
+    "status": true,
+    "stock": 80,
+    "category": "Electrónica",
+    "tags": ["tecnología", "gadgets", "última tecnología"]
+  },
+  {
+    "title": "Producto 17",
+    "description": "Este es otro producto de prueba con imagen y tags",
+    "price": 7.49,
+    "img_url": "https://picsum.photos/200/316",
+    "status": true,
+    "stock": 85,
+    "category": "Ropa",
+    "tags": ["moda", "vestir", "oferta"]
+  },
+  {
+    "title": "Producto 18",
+    "description": "Este es un producto de prueba más con imagen y tags",
+    "price": 10.49,
+    "img_url": "https://picsum.photos/200/317",
+    "status": true,
+    "stock": 90,
+    "category": "Juguetes",
+    "tags": ["diversión", "juegos", "novedades"]
+  },
+  {
+    "title": "Producto 19",
+    "description": "Este es un producto de prueba con imagen y tags",
+    "price": 15.49,
+    "img_url": "https://picsum.photos/200/318",
+    "status": true,
+    "stock": 95,
+    "category": "Electrónica",
+    "tags": ["tecnología", "gadgets", "smart"]
+  },
+  {
+    "title": "Producto 20",
+    "description": "Este es otro producto de prueba con imagen y tags",
+    "price": 11.49,
+    "img_url": "https://picsum.photos/200/319",
+    "status": true,
+    "stock": 100,
+    "category": "Ropa",
+    "tags": ["moda", "vestir", "colección"]
+  }
+]
