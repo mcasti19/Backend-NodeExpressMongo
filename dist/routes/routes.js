@@ -7,7 +7,7 @@ const authController_1 = require("../controllers/auth/authController");
 const controllers_1 = require("../controllers");
 const router = (0, express_1.Router)();
 exports.default = () => {
-    router.get('/server', (req, res) => {
+    router.get('/', (req, res) => {
         res.send("API is Healthy");
     });
     // //******************************************************/AUTH ROUTES

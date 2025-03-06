@@ -29,7 +29,7 @@ import {
 const router = Router();
 
 export default () => {
-    router.get('/server', (req, res) => {
+    router.get('/', (req, res) => {
         res.send("API is Healthy");
     });
 
