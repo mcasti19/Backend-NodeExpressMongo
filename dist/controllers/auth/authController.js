@@ -41,7 +41,7 @@ const loginUser = async (req, res) => {
             res.status(400).json({ message: "Invalid user or password" });
             return;
         }
-        const token = jsonwebtoken_1.default.sign({ id: user._id, email: user.email, name: user.username }, jwtSecret, { expiresIn: '3h' });
+        const token = jsonwebtoken_1.default.sign({ id: user._id, email: user.email, name: user.username }, jwtSecret, { expiresIn: '1h' });
         console.log("USERRRRR >>>>", user);
         res.status(200).json({
             id: user._id,
