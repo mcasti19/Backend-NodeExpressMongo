@@ -62,6 +62,14 @@ const EmployeeSchema = new mongoose_1.Schema({
         required: true,
         unique: true
     },
+    country: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
     position: {
         type: String,
         required: true,
