@@ -14,18 +14,18 @@ export class EmployeeRepository implements IEmployeeRepository {
   }
 
   async find(query?: Query): Promise<Employee[]> {
-    return await EmployeeModel.find(query || {}).exec();
+    return await EmployeeModel.find(query || {}).populate("userID").exec();
   }
 
   async findById(id: string): Promise<Employee | null> {
-    return await EmployeeModel.findById(id).exec();
+    return await EmployeeModel.findById(id).populate("userID").exec();
   }
   async findOne(query: Query): Promise<Employee | null> {
-    return await EmployeeModel.findOne(query).exec();
+    return await EmployeeModel.findOne(query).populate("userID").exec();
   }
 
   async update(id: string, data: Partial<Employee>): Promise<Employee | null> {
-    return await EmployeeModel.findByIdAndUpdate(id, data, { new: true }).exec();
+    return await EmployeeModel.findByIdAndUpdate(id, data, { new: true }).populate("userID").exec();
   }
 
   async delete(id: string): Promise<boolean> {

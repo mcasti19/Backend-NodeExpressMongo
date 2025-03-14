@@ -11,16 +11,16 @@ class EmployeeRepository {
         return await newEmployee.save();
     }
     async find(query) {
-        return await models_1.EmployeeModel.find(query || {}).exec();
+        return await models_1.EmployeeModel.find(query || {}).populate("userID").exec();
     }
     async findById(id) {
-        return await models_1.EmployeeModel.findById(id).exec();
+        return await models_1.EmployeeModel.findById(id).populate("userID").exec();
     }
     async findOne(query) {
-        return await models_1.EmployeeModel.findOne(query).exec();
+        return await models_1.EmployeeModel.findOne(query).populate("userID").exec();
     }
     async update(id, data) {
-        return await models_1.EmployeeModel.findByIdAndUpdate(id, data, { new: true }).exec();
+        return await models_1.EmployeeModel.findByIdAndUpdate(id, data, { new: true }).populate("userID").exec();
     }
     async delete(id) {
         const deleted = models_1.EmployeeModel.findByIdAndDelete(id).exec();

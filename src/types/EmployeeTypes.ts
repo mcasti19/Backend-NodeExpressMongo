@@ -1,5 +1,6 @@
-import { Document } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 import { Query, Repository } from "./RepositoryTypes";
+import { User } from "./UsersTypes";
 
 export interface Employee extends Document {
     img_profile?: string;
@@ -12,6 +13,7 @@ export interface Employee extends Document {
     city: string;
     position: string;
     department: string;
+    userID?: ObjectId;
     hireDate: Date;
 }
 
