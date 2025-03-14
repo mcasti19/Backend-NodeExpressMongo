@@ -47,8 +47,9 @@ const EmployeeSchema: Schema = new Schema<Employee>(
             required: true,
         },
         userId: {
-            ref: "Users",
-            type: mongoose.Schema.Types.ObjectId,
+            // ref: "Users",
+            // type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: false,
             default: ''
         },
