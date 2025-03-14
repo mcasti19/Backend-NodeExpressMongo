@@ -46,9 +46,10 @@ const EmployeeSchema: Schema = new Schema<Employee>(
             type: String,
             required: true,
         },
-        userID: {
+        userId: {
             ref: "Users",
-            type: mongoose.Schema.Types.ObjectId
+            type: mongoose.Schema.Types.ObjectId,
+            default: ''
         },
         hireDate: {
             type: Date,

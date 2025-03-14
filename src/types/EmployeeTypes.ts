@@ -13,7 +13,7 @@ export interface Employee extends Document {
     city: string;
     position: string;
     department: string;
-    userID?: ObjectId;
+    userId?: ObjectId;
     hireDate: Date;
 }
 
