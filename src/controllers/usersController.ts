@@ -3,6 +3,7 @@ import { EmployeeRepository, UserRepository } from "../repositories";
 import { UserService } from "../services";
 
 import { IUserService, IUserRepository, CreateUser, User } from "../types/UsersTypes";
+import { ObjectId } from "mongoose";
 
 //* Dependency Injection
 const userRepository: IUserRepository = new UserRepository();
@@ -13,7 +14,6 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
     try {
         // const newUser: User = req.body
         // const createdUser = await userService.createUser(newUser)
-
         const { username, password, roles, employeeId } = req.body;
 
         // Buscar el empleado correspondiente en la base de datos
@@ -36,6 +36,8 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
         };
 
         const createdUser = await userService.createUser(user);
+        await employeeRepository.update(employeeId, { userId: createdUser._id as ObjectId });
+
         res.status(201).json({ msg: 'User created successfully', createdUser });
 
     } catch (error) {
@@ -51,7 +53,6 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
             res.status(404).json({ message: 'No users Found' });
             return
         }
-
         res.status(200).json(users);
 
     } catch (error) {

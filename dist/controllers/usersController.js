@@ -28,6 +28,7 @@ const createUser = async (req, res) => {
             employeeId,
         };
         const createdUser = await userService.createUser(user);
+        await employeeRepository.update(employeeId, { userId: createdUser._id });
         res.status(201).json({ msg: 'User created successfully', createdUser });
     }
     catch (error) {
