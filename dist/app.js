@@ -34,6 +34,6 @@ app.listen(port, () => {
 // Manejador de errores global
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Algo salió mal!');
+    res.status(500).send({ message: 'Algo salió mal!', err });
 });
 exports.default = app;
