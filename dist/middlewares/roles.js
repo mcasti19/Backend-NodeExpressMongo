@@ -12,7 +12,7 @@ const checkRoles = async (req, res, next) => {
     try {
         const findRole = await rolesService.findRoles({ name: { $in: role } });
         if (findRole.length === 0) {
-            res.status(404).json({ message: "Role Not Found" });
+            res.status(404).json({ message: "Cheking Role No Found" });
             return;
         }
         req.body.roles = findRole.map(x => x._id);
