@@ -23,7 +23,8 @@ export const findInvoices = async (req: Request, res: Response) => {
         amount: x.amount,
         email: x.customer.email,
         image_url: x.customer.image_url,
-        name: x.customer.name
+        name: x.customer.name,
+        date: x.date
       };
     });
 

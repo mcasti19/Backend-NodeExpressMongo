@@ -20,7 +20,8 @@ const findInvoices = async (req, res) => {
                 amount: x.amount,
                 email: x.customer.email,
                 image_url: x.customer.image_url,
-                name: x.customer.name
+                name: x.customer.name,
+                date: x.date
             };
         });
         res.json(result);
