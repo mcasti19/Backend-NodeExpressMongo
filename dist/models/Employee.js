@@ -83,6 +83,10 @@ const EmployeeSchema = new mongoose_1.Schema({
         type: mongoose_1.default.Schema.Types.ObjectId,
         required: false,
     },
+    status: {
+        type: String,
+        default: 'Active'
+    },
     hireDate: {
         type: Date,
         required: true,

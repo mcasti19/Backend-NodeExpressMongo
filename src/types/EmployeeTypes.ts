@@ -14,6 +14,7 @@ export interface Employee extends Document {
     position: string;
     department: string;
     userId?: ObjectId;
+    status: string;
     hireDate: Date;
 }
 

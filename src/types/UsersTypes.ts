@@ -13,6 +13,7 @@ export interface User extends Document {
   roles?: Roles[];
   permissions?: string[];
   employeeId: ObjectId;
+  status: string;
   comparePassword(password: string): Promise<boolean>;
 }
 

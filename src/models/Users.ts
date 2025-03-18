@@ -37,6 +37,10 @@ const UserSchema: Schema = new Schema<User>(
             ref: "Employees",
             type: mongoose.Schema.Types.ObjectId
         },
+        status: {
+            type: String,
+            default:'Active'
+        },
         img_profile: {
             ref: "Employees",
             type: mongoose.Schema.Types.ObjectId
