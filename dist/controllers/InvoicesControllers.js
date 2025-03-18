@@ -9,7 +9,7 @@ const customerRepository = new repositories_1.CustomerRepository();
 const customerService = new services_1.CustomerService(customerRepository);
 const findInvoices = async (req, res) => {
     try {
-        const invoices = await invoicesService.findInvoices({}, {}, { limit: 5 });
+        const invoices = await invoicesService.findInvoices({}, {}, { limit: 10 });
         if (invoices.length === 0) {
             res.status(404).json({ message: "no Invoices Found." });
             return;

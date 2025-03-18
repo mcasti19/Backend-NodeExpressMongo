@@ -12,7 +12,7 @@ const customerService: ICustomerService = new CustomerService(customerRepository
 
 export const findInvoices = async (req: Request, res: Response) => {
   try {
-    const invoices = await invoicesService.findInvoices({}, {}, { limit: 5 });
+    const invoices = await invoicesService.findInvoices({}, {}, { limit: 10 });
     if (invoices.length === 0) {
       res.status(404).json({ message: "no Invoices Found." });
       return
