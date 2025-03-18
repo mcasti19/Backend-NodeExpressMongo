@@ -62,7 +62,7 @@ const createInvoice = async (req, res) => {
         }
         const newInvoice = req.body;
         const result = await invoicesService.createInvoice(newInvoice);
-        res.status(201).json(result);
+        res.status(201).json({ message: 'Invoice Created', result });
     }
     catch (error) {
         console.log("error :>> ", error);
