@@ -42,7 +42,7 @@ const loginUser = async (req, res) => {
             return;
         }
         const token = jsonwebtoken_1.default.sign({ id: user._id, email: user.email, name: user.username }, jwtSecret, { expiresIn: '1h' });
-        console.log("USERRRRR >>>>", user);
+        // console.log("USERRRRR >>>>", user);
         res.status(200).json({
             id: user._id,
             name: user.username,
@@ -59,9 +59,9 @@ const loginUser = async (req, res) => {
 exports.loginUser = loginUser;
 const revalidarToken = async (req, res) => {
     const jwtSecret = process.env.JWT_SECRET;
-    const { id, name, email } = req.body;
+    const { id, name, email, password } = req.body;
     const user = await userService.findUserByEmail(email);
-    console.log(user);
+    console.log("USER REVALIDATIN ", user);
     if (!user) {
         res.status(400).json({ message: "Invalid username or password, token cannot be revalidated" });
         return;
@@ -69,9 +69,9 @@ const revalidarToken = async (req, res) => {
     //* Generating new Token
     // const token = await generarJWT(uid, name);
     const token = jsonwebtoken_1.default.sign({
-        id: user._id,
-        email: user.email,
-        name: user.username
+        id: user?._id,
+        email: user?.email,
+        name: user?.username
     }, jwtSecret, { expiresIn: '1h' });
     res.json({
         msg: 'Revalidating Token',
