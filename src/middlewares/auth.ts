@@ -14,21 +14,25 @@ const userService: IUserService = new UserService(userRepository);
 export const verifyToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const jwtSecret = process.env.JWT_SECRET as string;
     const token = req.headers.authorization?.match(/^Bearer (.*)$/)?.[ 1 ].trim();
+
     if (!token) {
-        {
-            res.status(401).send({ error: "Token not provided" });
-            return
-        }
+        res.status(401).json({
+            ok: false,
+            msg: 'Token not provided'
+        });
+        return
     }
+
     try {
-        const verify = jwt.verify(token, jwtSecret) as User;
-        const getUser = await userService.findUserById(verify.id);
+        const { id, name } = jwt.verify(token, jwtSecret) as User;
+        const getUser = await userService.findUserById(id);
+
         if (!getUser) {
             res.status(400);
             return
         }
-
         req.currentUser = getUser;
+        console.log("GET USER ", getUser);
         next();
 
     } catch (error: any) {

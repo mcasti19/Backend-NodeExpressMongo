@@ -60,3 +60,35 @@ export const loginUser = async (req: Request, res: Response) => {
         res.status(500).json(error);
     }
 };
+
+
+
+export const revalidarToken = async (req: Request, res: Response) => {
+    const jwtSecret = process.env.JWT_SECRET as string;
+    const { id, name, email }: User = req.body;
+    const user = await userService.findUserByEmail(email);
+    console.log(user);
+
+    if (!user) {
+        res.status(400).json({ message: "Invalid user or password" });
+        return
+    }
+
+    //* Generating new Token
+    // const token = await generarJWT(uid, name);
+    const token = jwt.sign(
+        {
+            id: user._id,
+            email: user.email,
+            name: user.username
+        }, jwtSecret, { expiresIn: '1h' });
+
+    res.json({
+        msg: 'Revalidating Token',
+        ok: true,
+        name,
+        id,
+        email,
+        token,
+    })
+}

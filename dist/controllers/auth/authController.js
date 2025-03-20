@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginUser = exports.registerUser = void 0;
+exports.revalidarToken = exports.loginUser = exports.registerUser = void 0;
 const repositories_1 = require("../../repositories");
 const services_1 = require("../../services");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
@@ -57,3 +57,29 @@ const loginUser = async (req, res) => {
     }
 };
 exports.loginUser = loginUser;
+const revalidarToken = async (req, res) => {
+    const jwtSecret = process.env.JWT_SECRET;
+    const { id, name, email } = req.body;
+    const user = await userService.findUserByEmail(email);
+    console.log(user);
+    if (!user) {
+        res.status(400).json({ message: "Invalid user or password" });
+        return;
+    }
+    //* Generating new Token
+    // const token = await generarJWT(uid, name);
+    const token = jsonwebtoken_1.default.sign({
+        id: user._id,
+        email: user.email,
+        name: user.username
+    }, jwtSecret, { expiresIn: '1h' });
+    res.json({
+        msg: 'Revalidating Token',
+        ok: true,
+        name,
+        id,
+        email,
+        token,
+    });
+};
+exports.revalidarToken = revalidarToken;

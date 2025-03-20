@@ -14,19 +14,21 @@ const verifyToken = async (req, res, next) => {
     const jwtSecret = process.env.JWT_SECRET;
     const token = req.headers.authorization?.match(/^Bearer (.*)$/)?.[1].trim();
     if (!token) {
-        {
-            res.status(401).send({ error: "Token not provided" });
-            return;
-        }
+        res.status(401).json({
+            ok: false,
+            msg: 'Token not provided'
+        });
+        return;
     }
     try {
-        const verify = jsonwebtoken_1.default.verify(token, jwtSecret);
-        const getUser = await userService.findUserById(verify.id);
+        const { id, name } = jsonwebtoken_1.default.verify(token, jwtSecret);
+        const getUser = await userService.findUserById(id);
         if (!getUser) {
             res.status(400);
             return;
         }
         req.currentUser = getUser;
+        console.log("GET USER ", getUser);
         next();
     }
     catch (error) {

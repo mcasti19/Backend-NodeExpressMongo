@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { checkRoles } from "../middlewares/roles";
 import { getPermission, verifyToken } from "../middlewares/auth";
-import { loginUser, registerUser } from "../controllers/auth/authController";
+import { loginUser, registerUser, revalidarToken } from "../controllers/auth/authController";
 
 import {
     deleteUserById,
@@ -36,6 +36,7 @@ export default () => {
     // //******************************************************/AUTH ROUTES
     router.post('/auth/register', checkRoles, registerUser);
     router.post('/auth/login', loginUser);
+    router.get('/auth/renew', verifyToken, revalidarToken);
 
     // //*****************************************************/ ROLES ROUTES
     router.post('/roles', verifyToken, getPermission, registerRole)

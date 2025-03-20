@@ -13,6 +13,7 @@ exports.default = () => {
     // //******************************************************/AUTH ROUTES
     router.post('/auth/register', roles_1.checkRoles, authController_1.registerUser);
     router.post('/auth/login', authController_1.loginUser);
+    router.get('/auth/renew', auth_1.verifyToken, authController_1.revalidarToken);
     // //*****************************************************/ ROLES ROUTES
     router.post('/roles', auth_1.verifyToken, auth_1.getPermission, controllers_1.registerRole);
     router.get('/roles', auth_1.verifyToken, auth_1.getPermission, controllers_1.getRoles);
