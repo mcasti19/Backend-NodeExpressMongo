@@ -63,7 +63,7 @@ const revalidarToken = async (req, res) => {
     const user = await userService.findUserByEmail(email);
     console.log(user);
     if (!user) {
-        res.status(400).json({ message: "Invalid user or password" });
+        res.status(400).json({ message: "Invalid username or password, token cannot be revalidated" });
         return;
     }
     //* Generating new Token
