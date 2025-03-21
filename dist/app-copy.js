@@ -13,6 +13,19 @@ const routes_1 = __importDefault(require("./routes/routes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, morgan_1.default)("dev"));
+// app.use((req: Request, res: Response, next: NextFunction) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   next();
+// });
+// app.use(cors({
+//   // Cambia esto según tu configuración
+//   // origin: 'http://localhost:5173',
+//   origin: 'https://react-full-stack-dashboard.vercel.app',
+//   methods: 'GET, POST, PUT, DELETE, OPTIONS',
+//   allowedHeaders: 'Content-Type, Authorization',
+// }));
 // Configuración optimizada y segura
 app.use((0, cors_1.default)({
     origin: [
@@ -21,9 +34,9 @@ app.use((0, cors_1.default)({
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    exposedHeaders: ['Authorization'],
-    credentials: true,
-    maxAge: 86400
+    exposedHeaders: ['Authorization'], // Si necesitas exponer headers
+    credentials: true, // Si usas cookies/tokens de autenticación
+    maxAge: 86400 // Cache de CORS por 24 horas
 }));
 app.use('/', (0, routes_1.default)());
 //* SOLO PARA USO LOCAL
