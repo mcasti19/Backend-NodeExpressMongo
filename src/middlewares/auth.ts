@@ -32,7 +32,7 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
             return
         }
         req.currentUser = getUser;
-        console.log("GET USER ", getUser);
+        // console.log("verifyToken USER ", getUser);
         next();
 
     } catch (error: any) {

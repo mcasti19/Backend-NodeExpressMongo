@@ -28,7 +28,7 @@ const verifyToken = async (req, res, next) => {
             return;
         }
         req.currentUser = getUser;
-        console.log("GET USER ", getUser);
+        // console.log("verifyToken USER ", getUser);
         next();
     }
     catch (error) {
