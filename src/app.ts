@@ -20,7 +20,9 @@ app.use(morgan("dev"));
 // });
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Cambia esto según tu configuración
+  // Cambia esto según tu configuración
+  // origin: 'http://localhost:5173',
+  origin: 'https://react-full-stack-dashboard.vercel.app/',
   methods: 'GET, POST, PUT, DELETE, OPTIONS',
   allowedHeaders: 'Content-Type, Authorization',
 }));
