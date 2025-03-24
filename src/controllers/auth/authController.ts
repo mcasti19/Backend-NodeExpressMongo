@@ -72,15 +72,14 @@ export const loginUser = async (req: Request, res: Response) => {
 
 
 export const revalidarToken = async (req: Request, res: Response) => {
-    const { id, name } = req.currentUser;
+    const user = req.currentUser;
     //* Generating new Token
     try {
-        const token = await generarJWT(id as string, name);
+        const token = await generarJWT(user.id as string, user.name);
         res.status(200).json({
             msg: 'Revalidating Token',
             ok: true,
-            id,
-            name,
+            user,
             token,
         });
     } catch (error) {
