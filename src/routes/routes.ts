@@ -45,6 +45,13 @@ export default () => {
     router.put('/roles/:id', verifyToken, getPermission, updateRoleById)
     router.delete('/roles/:id', verifyToken, getPermission, deleteRoleById);
 
+    // //*****************************************************/ PERMISSIONS ROUTES
+    // router.post('/permission', verifyToken, getPermission, createPermission)
+    // router.get('/permissions', verifyToken, getPermission, getPermissions)
+    // router.get('/permissions/:id', verifyToken, getPermission, getPermissionById)
+    // router.put('/permissions/:id', verifyToken, getPermission, updatePermissionById)
+    // router.delete('/permissions/:id', verifyToken, getPermission, deletePermissionById);
+
     // //***************************************************/ USERS ROUTES
     router.post('/users', verifyToken, getPermission, checkRoles, createUser);
     router.get('/users', verifyToken, getPermission, getUsers);
@@ -65,6 +72,7 @@ export default () => {
     router.get("/employees/:id", findEmployeeById);
     router.put("/employees/:id", verifyToken, getPermission, updateEmployee);
     router.delete("/employees/:id", verifyToken, getPermission, deleteEmployee);
+
 
     return router
 };

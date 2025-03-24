@@ -20,6 +20,12 @@ exports.default = () => {
     router.get('/roles/:id', auth_1.verifyToken, auth_1.getPermission, controllers_1.getRoleById);
     router.put('/roles/:id', auth_1.verifyToken, auth_1.getPermission, controllers_1.updateRoleById);
     router.delete('/roles/:id', auth_1.verifyToken, auth_1.getPermission, controllers_1.deleteRoleById);
+    // //*****************************************************/ PERMISSIONS ROUTES
+    // router.post('/permission', verifyToken, getPermission, createPermission)
+    // router.get('/permissions', verifyToken, getPermission, getPermissions)
+    // router.get('/permissions/:id', verifyToken, getPermission, getPermissionById)
+    // router.put('/permissions/:id', verifyToken, getPermission, updatePermissionById)
+    // router.delete('/permissions/:id', verifyToken, getPermission, deletePermissionById);
     // //***************************************************/ USERS ROUTES
     router.post('/users', auth_1.verifyToken, auth_1.getPermission, roles_1.checkRoles, controllers_1.createUser);
     router.get('/users', auth_1.verifyToken, auth_1.getPermission, controllers_1.getUsers);

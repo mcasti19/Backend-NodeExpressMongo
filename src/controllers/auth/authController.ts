@@ -4,6 +4,8 @@ import { UserService } from '../../services';
 import { IUserService, IUserRepository, User } from '../../types/UsersTypes';
 import jwt from "jsonwebtoken";
 import { permissions } from '../../types/PermissionsTypes';
+import { generarJWT } from "../../helpers/jwt";
+
 
 //* Inyeccion de Dependencias
 const userRepository: IUserRepository = new UserRepository();
@@ -29,7 +31,6 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
 }
 
 export const loginUser = async (req: Request, res: Response) => {
-    const jwtSecret = process.env.JWT_SECRET as string;
     try {
         const { email, password }: User = req.body;
         const user = await userService.findUserByEmail(email);
@@ -45,97 +46,45 @@ export const loginUser = async (req: Request, res: Response) => {
             return
         }
 
-        const token = jwt.sign({ id: user._id, email: user.email, name: user.username }, jwtSecret, { expiresIn: '1h' });
+        try {
+            const token = await generarJWT(user._id as string, user.username as string);
+            res.status(200).json({
+                message: 'user authenticated successfully',
+                user: {
+                    id: user._id,
+                    name: user.username,
+                    email: user.email,
+                    role: user.roles ? user.roles.map(role => role.name) : [],
+                    permissions: user.permissions,
+                    status: user.status,
+                    token
+                }
+            });
+        } catch (error) {
+            console.log("error :>> ", error);
+            res.status(500).json(error);
+        }
+    } catch (error) {
+        console.log("error :>> ", error);
+        res.status(500).json(error);
+    }
+};
 
-        // console.log("USERRRRR >>>>", user);
+
+export const revalidarToken = async (req: Request, res: Response) => {
+    const { id, name } = req.currentUser;
+    //* Generating new Token
+    try {
+        const token = await generarJWT(id as string, name);
         res.status(200).json({
-            message:'user authenticated successfully',
-            user: {
-                id: user._id,
-                name: user.username,
-                email: user.email,
-                role: user.roles ? user.roles.map(role => role.name) : [], // Comprueba si user.roles es definido
-                permissions: user.permissions,
-                status: user.status,
-                token
-            }
-     
+            msg: 'Revalidating Token',
+            ok: true,
+            id,
+            name,
+            token,
         });
     } catch (error) {
         console.log("error :>> ", error);
         res.status(500).json(error);
-    }};
-
-
-export const revalidarToken = async (req: Request, res: Response) => {
-    const jwtSecret = process.env.JWT_SECRET as string;
-    console.log(req.query);
-  
-    const query = req.query as { [key: string]: string };
-    const { id, name, email } = query;
-    console.log({ email });
-  
-    const user = await userService.findUserByEmail(email);
-    console.log("USER REVALIDATIN ", user);
-  
-    if (!user) {
-      res.status(400).json({ message: "Invalid username or password, token cannot be revalidated" });
-      return
     }
-  
-    //* Generating new Token
-    // const token = await generarJWT(uid, name);
-    const token = jwt.sign(
-      {
-        id: user._id,
-        email: user.email,
-        name: user.username
-      }, jwtSecret, { expiresIn: '1h' });
-  
-    res.json({
-        msg: 'Revalidating Token',
-        ok: true,
-        id,
-        email,
-        name,
-        token,
-    });
 }
-
-
-
-
-
-// export const revalidarToken = async (req: Request, res: Response) => {
-//     const jwtSecret = process.env.JWT_SECRET as string;
-//     console.log(req.body);
-    
-//     const { id, name, email }: User = req.body;
-//     console.log({ id, name, email });
-
-//     const user = await userService.findUserByEmail(email);
-//     console.log("USER REVALIDATIN ", user);
-
-//     if (!user) {
-//         res.status(400).json({ message: "Invalid username or password, token cannot be revalidated" });
-//         return
-//     }
-
-//     //* Generating new Token
-//     // const token = await generarJWT(uid, name);
-//     const token = jwt.sign(
-//         {
-//             id: user?._id,
-//             email: user?.email,
-//             name: user?.username
-//         }, jwtSecret, { expiresIn: '1h' });
-
-//     res.json({
-//         msg: 'Revalidating Token',
-//         ok: true,
-//         name,
-//         id,
-//         email,
-//         token,
-//     })
-// }

@@ -31,7 +31,10 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
             res.status(400);
             return
         }
-        req.currentUser = getUser;
+        req.currentUser.id = id;
+        req.currentUser.name = name;
+
+        // req.currentUser = getUser;
         // console.log("verifyToken USER ", getUser);
         next();
 
