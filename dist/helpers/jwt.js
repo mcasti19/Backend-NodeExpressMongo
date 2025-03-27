@@ -9,7 +9,7 @@ const generarJWT = (id, name) => {
     return new Promise((resolve, reject) => {
         const payload = { id, name };
         jsonwebtoken_1.default.sign(payload, process.env.JWT_SECRET, {
-            expiresIn: '1h'
+            expiresIn: '1200'
         }, (err, token) => {
             if (err) {
                 console.log(err);
