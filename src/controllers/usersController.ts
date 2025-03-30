@@ -48,12 +48,23 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
     try {
-        const users = await userService.findUsers();
-        if (users.length === 0) {
-            res.status(404).json({ message: 'No users Found' });
-            return
+
+        const page = parseInt(req.query.page as string) || 1; // Página por defecto
+        const pageSize = parseInt(req.query.pageSize as string) || 5; // Tamaño de página por defecto
+
+        // Validar que los parámetros sean positivos
+        if (page < 1 || pageSize < 1) {
+            res.status(400).json({ error: 'Invalid pagination parameters' });
+            return;
         }
-        res.status(200).json(users);
+
+        // const users = await userService.findAllUsers();
+          const result = await userService.findUsersPaginated(page, pageSize);
+        if (result.users.length === 0) {
+            res.status(404).json({ message: 'No users Found' });
+            return;
+        }
+        res.status(200).json(result); // Enviar la respuesta paginada
 
     } catch (error) {
         console.log('Error >>', error);

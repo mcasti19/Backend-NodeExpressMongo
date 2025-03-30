@@ -1,26 +1,34 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.employeeCount = exports.deleteEmployee = exports.updateEmployee = exports.createEmployee = exports.findEmployeeById = exports.findEmployees = void 0;
+exports.employeeCount = exports.deleteEmployee = exports.updateEmployee = exports.createEmployee = exports.getEmployeeById = exports.getEmployees = void 0;
 const repositories_1 = require("../repositories");
 const _services_1 = require("@services");
 const employeeRepository = new repositories_1.EmployeeRepository();
 const employeeService = new _services_1.EmployeeService(employeeRepository);
-const findEmployees = async (req, res) => {
+const getEmployees = async (req, res) => {
     try {
-        const employees = await employeeService.findEmployees();
-        if (employees.length === 0) {
-            res.status(404).json({ message: "No Employees Found." });
+        // const employees = await employeeService.findAllEmployees();
+        const page = parseInt(req.query.page) || 1; // Página por defecto
+        const pageSize = parseInt(req.query.pageSize) || 5; // Tamaño de página por defecto
+        // Validar que los parámetros sean positivos
+        if (page < 1 || pageSize < 1) {
+            res.status(400).json({ error: 'Invalid pagination parameters' });
             return;
         }
-        res.json(employees);
+        const result = await employeeService.findEmployeesPaginated(page, pageSize);
+        if (result.employees.length === 0) {
+            res.status(404).json({ message: 'No Employees Found' });
+            return;
+        }
+        res.status(200).json(result); // Enviar la respuesta paginada
     }
     catch (error) {
         console.log("error :>> ", error);
         res.status(500).json(error);
     }
 };
-exports.findEmployees = findEmployees;
-const findEmployeeById = async (req, res) => {
+exports.getEmployees = getEmployees;
+const getEmployeeById = async (req, res) => {
     try {
         const employee = await employeeService.findEmployeeById(req.params.id);
         if (!employee) {
@@ -34,7 +42,7 @@ const findEmployeeById = async (req, res) => {
         res.status(500).json(error);
     }
 };
-exports.findEmployeeById = findEmployeeById;
+exports.getEmployeeById = getEmployeeById;
 const createEmployee = async (req, res) => {
     try {
         const newEmployee = req.body;

@@ -1,5 +1,5 @@
 import { Query } from "../types/RepositoryTypes";
-import { IUserRepository, IUserService, User } from "../types/UsersTypes";
+import { IUserRepository, IUserService, PaginatedResponse, User } from "../types/UsersTypes";
 
 export class UserService implements IUserService {
     private userRepository: IUserRepository
@@ -12,7 +12,7 @@ export class UserService implements IUserService {
         return this.userRepository.create(user)
     }
 
-    async findUsers(query?: Query): Promise<User[]> {
+    async findAllUsers(query?: Query): Promise<User[]> {
         return this.userRepository.find(query)
     }
 
@@ -30,5 +30,19 @@ export class UserService implements IUserService {
 
     async deleteUser(id: string): Promise<boolean> {
         return this.userRepository.delete(id)
+    }
+
+    async findUsersPaginated(page: number, pageSize: number, query?: Query): Promise<PaginatedResponse<User>> {
+        const { users, totalUsers } = await this.userRepository.findPaginated(page, pageSize, query);
+        const totalPages = Math.ceil(totalUsers / pageSize);
+        return {
+            users,
+            metadata: {
+                currentPage: page,
+                totalPages,
+                totalItems: totalUsers,
+                pageSize
+            }
+        };
     }
 }

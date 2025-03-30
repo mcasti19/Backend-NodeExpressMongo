@@ -8,7 +8,7 @@ class UserService {
     async createUser(user) {
         return this.userRepository.create(user);
     }
-    async findUsers(query) {
+    async findAllUsers(query) {
         return this.userRepository.find(query);
     }
     async findUserById(id) {
@@ -22,6 +22,19 @@ class UserService {
     }
     async deleteUser(id) {
         return this.userRepository.delete(id);
+    }
+    async findUsersPaginated(page, pageSize, query) {
+        const { users, totalUsers } = await this.userRepository.findPaginated(page, pageSize, query);
+        const totalPages = Math.ceil(totalUsers / pageSize);
+        return {
+            users,
+            metadata: {
+                currentPage: page,
+                totalPages,
+                totalItems: totalUsers,
+                pageSize
+            }
+        };
     }
 }
 exports.UserService = UserService;

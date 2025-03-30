@@ -1,6 +1,5 @@
 import { Document, ObjectId } from "mongoose";
 import { Query, Repository } from "./RepositoryTypes";
-import { User } from "./UsersTypes";
 
 export interface Employee extends Document {
     img_profile?: string;
@@ -18,16 +17,30 @@ export interface Employee extends Document {
     hireDate: Date;
 }
 
+
 export interface IEmployeeRepository extends Repository<Employee> {
     findOne(query: Query): Promise<Employee | null>;
     employeeCount(): Promise<number>;
+    findPaginated(page: number, pageSize: number, query?: Query): Promise<{ employees: Employee[], totalEmployees: number }>;
 };
+
+export interface PaginatedResponse<T> {
+    employees: T[];
+    metadata: {
+        currentPage: number;
+        totalPages: number;
+        totalItems: number;
+        pageSize: number;
+    };
+}
+
 
 export interface IEmployeeService {
     createEmployee(employee: Employee): Promise<Employee>;
-    findEmployees(query?: Query): Promise<Employee[]>;
+    findAllEmployees(query?: Query): Promise<Employee[]>;
     findEmployeeById(id: string): Promise<Employee | null>;
     updateEmployee(id: string, employee: Partial<Employee>): Promise<Employee | null>;
     deleteEmployee(id: string): Promise<boolean>;
     employeeCount(): Promise<number>;
+    findEmployeesPaginated(page: number, pageSize: number, query?: Query): Promise<PaginatedResponse<Employee>>;
 }

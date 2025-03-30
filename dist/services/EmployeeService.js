@@ -8,7 +8,7 @@ class EmployeeService {
     async createEmployee(employee) {
         return this.employeeRepository.create(employee);
     }
-    async findEmployees(query) {
+    async findAllEmployees(query) {
         return this.employeeRepository.find(query);
     }
     async findEmployeeById(id) {
@@ -22,6 +22,19 @@ class EmployeeService {
     }
     async employeeCount() {
         return this.employeeRepository.employeeCount();
+    }
+    async findEmployeesPaginated(page, pageSize, query) {
+        const { employees, totalEmployees } = await this.employeeRepository.findPaginated(page, pageSize, query);
+        const totalPages = Math.ceil(totalEmployees / pageSize);
+        return {
+            employees,
+            metadata: {
+                currentPage: page,
+                totalPages,
+                totalItems: totalEmployees,
+                pageSize
+            }
+        };
     }
 }
 exports.EmployeeService = EmployeeService;

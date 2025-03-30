@@ -16,14 +16,14 @@ import {
     updateRoleById,
     createEmployee,
     deleteEmployee,
-    findEmployeeById,
-    findEmployees,
     updateEmployee,
     createInvoice,
     findInvoices,
     findInvoiceById,
     updateInvoice,
-    deleteInvoice
+    deleteInvoice,
+    getEmployees,
+    getEmployeeById
 } from "../controllers";
 
 const router = Router();
@@ -68,8 +68,8 @@ export default () => {
 
     // //****************************************************/ EMPLOYEES ROUTES
     router.post("/employees", verifyToken, getPermission, createEmployee);
-    router.get("/employees", findEmployees);
-    router.get("/employees/:id", findEmployeeById);
+    router.get("/employees", getEmployees);
+    router.get("/employees/:id", getEmployeeById);
     router.put("/employees/:id", verifyToken, getPermission, updateEmployee);
     router.delete("/employees/:id", verifyToken, getPermission, deleteEmployee);
 

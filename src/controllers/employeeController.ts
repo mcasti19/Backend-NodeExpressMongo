@@ -7,22 +7,32 @@ import { Request, Response } from "express";
 const employeeRepository: IEmployeeRepository = new EmployeeRepository();
 const employeeService: IEmployeeService = new EmployeeService(employeeRepository);
 
-export const findEmployees = async (req: Request, res: Response) => {
+export const getEmployees = async (req: Request, res: Response) => {
     try {
-        const employees = await employeeService.findEmployees();
-        if (employees.length === 0) {
-            res.status(404).json({ message: "No Employees Found." });
-            return
+        // const employees = await employeeService.findAllEmployees();
+         const page = parseInt(req.query.page as string) || 1; // Página por defecto
+        const pageSize = parseInt(req.query.pageSize as string) || 5; // Tamaño de página por defecto
+
+        // Validar que los parámetros sean positivos
+        if (page < 1 || pageSize < 1) {
+            res.status(400).json({ error: 'Invalid pagination parameters' });
+            return;
         }
 
-        res.json(employees);
+        const result = await employeeService.findEmployeesPaginated(page, pageSize);
+        if (result.employees.length === 0) {
+            res.status(404).json({ message: 'No Employees Found' });
+            return;
+        }
+        res.status(200).json(result); // Enviar la respuesta paginada
+
     } catch (error) {
         console.log("error :>> ", error);
         res.status(500).json(error);
     }
 };
 
-export const findEmployeeById = async (req: Request, res: Response) => {
+export const getEmployeeById = async (req: Request, res: Response) => {
     try {
         const employee = await employeeService.findEmployeeById(req.params.id);
         if (!employee) {
@@ -47,7 +57,7 @@ export const createEmployee = async (req: Request, res: Response) => {
 
     } catch (error) {
         console.log("error :>> ", error);
-        res.status(400).json({Error:"Failed to create employee", error});
+        res.status(400).json({ Error: "Failed to create employee", error });
     }
 };
 
@@ -62,7 +72,7 @@ export const updateEmployee = async (req: Request, res: Response) => {
         res.json(employee);
     } catch (error) {
         console.log("error :>> ", error);
-        res.status(500).json({Error:"Failed to Update employee", error});
+        res.status(500).json({ Error: "Failed to Update employee", error });
     }
 };
 
@@ -77,7 +87,7 @@ export const deleteEmployee = async (req: Request, res: Response) => {
         res.json(employee);
     } catch (error) {
         console.log("error :>> ", error);
-        res.status(500).json({Error:"Failed to Delete employee", error});
+        res.status(500).json({ Error: "Failed to Delete employee", error });
     }
 };
 

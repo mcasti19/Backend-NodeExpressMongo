@@ -40,8 +40,8 @@ exports.default = () => {
     router.delete('/invoices/:id', auth_1.verifyToken, auth_1.getPermission, controllers_1.deleteInvoice);
     // //****************************************************/ EMPLOYEES ROUTES
     router.post("/employees", auth_1.verifyToken, auth_1.getPermission, controllers_1.createEmployee);
-    router.get("/employees", controllers_1.findEmployees);
-    router.get("/employees/:id", controllers_1.findEmployeeById);
+    router.get("/employees", controllers_1.getEmployees);
+    router.get("/employees/:id", controllers_1.getEmployeeById);
     router.put("/employees/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.updateEmployee);
     router.delete("/employees/:id", auth_1.verifyToken, auth_1.getPermission, controllers_1.deleteEmployee);
     return router;

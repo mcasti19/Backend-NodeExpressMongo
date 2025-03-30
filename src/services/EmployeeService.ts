@@ -1,4 +1,4 @@
-import { Employee, IEmployeeRepository, IEmployeeService } from "../types/EmployeeTypes";
+import { Employee, IEmployeeRepository, IEmployeeService, PaginatedResponse } from "../types/EmployeeTypes";
 import { Query } from "../types/RepositoryTypes";
 
 
@@ -13,7 +13,7 @@ export class EmployeeService implements IEmployeeService {
         return this.employeeRepository.create(employee);
     }
 
-    async findEmployees(query?: Query): Promise<Employee[]> {
+    async findAllEmployees(query?: Query): Promise<Employee[]> {
         return this.employeeRepository.find(query);
     }
 
@@ -32,4 +32,23 @@ export class EmployeeService implements IEmployeeService {
     async employeeCount(): Promise<number> {
         return this.employeeRepository.employeeCount();
     }
+
+    async findEmployeesPaginated(page: number, pageSize: number, query?: Query): Promise<PaginatedResponse<Employee>> {
+        const { employees, totalEmployees } = await this.employeeRepository.findPaginated(page, pageSize, query);
+        const totalPages = Math.ceil(totalEmployees / pageSize);
+        return {
+            employees,
+            metadata: {
+                currentPage: page,
+                totalPages,
+                totalItems: totalEmployees,
+                pageSize
+            }
+        };
+    }
+
+
+
+
+
 }

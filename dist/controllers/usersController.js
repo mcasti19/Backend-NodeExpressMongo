@@ -39,12 +39,20 @@ const createUser = async (req, res) => {
 exports.createUser = createUser;
 const getUsers = async (req, res) => {
     try {
-        const users = await userService.findUsers();
-        if (users.length === 0) {
+        const page = parseInt(req.query.page) || 1; // Página por defecto
+        const pageSize = parseInt(req.query.pageSize) || 5; // Tamaño de página por defecto
+        // Validar que los parámetros sean positivos
+        if (page < 1 || pageSize < 1) {
+            res.status(400).json({ error: 'Invalid pagination parameters' });
+            return;
+        }
+        // const users = await userService.findAllUsers();
+        const result = await userService.findUsersPaginated(page, pageSize);
+        if (result.users.length === 0) {
             res.status(404).json({ message: 'No users Found' });
             return;
         }
-        res.status(200).json(users);
+        res.status(200).json(result); // Enviar la respuesta paginada
     }
     catch (error) {
         console.log('Error >>', error);
