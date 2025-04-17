@@ -17,7 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./CustomerService"), exports);
 __exportStar(require("./EmployeeService"), exports);
 __exportStar(require("./InvoicesService"), exports);
-__exportStar(require("./productsServices"), exports);
+// export * from './Apagado_productsServices';
 __exportStar(require("./RevenueService"), exports);
 __exportStar(require("./rolesServices"), exports);
 __exportStar(require("./userServices"), exports);

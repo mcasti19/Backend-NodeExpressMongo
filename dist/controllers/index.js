@@ -20,4 +20,4 @@ __exportStar(require("./customerControllers"), exports);
 __exportStar(require("./revenueControllers"), exports);
 __exportStar(require("./rolesController"), exports);
 __exportStar(require("./usersController"), exports);
-__exportStar(require("./productController"), exports);
+// export * from './Apagado_productController';

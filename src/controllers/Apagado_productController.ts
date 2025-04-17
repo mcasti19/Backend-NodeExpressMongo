@@ -1,6 +1,6 @@
-import { ProductRepository } from "@repositories/productsRepository";
-import { IProductRepository, IProductService, Product } from '../types/ProductTypes';
-import { ProductService } from "@services/productsServices";
+import { ProductRepository } from "@repositories/Apagado_productsRepository";
+import { IProductRepository, IProductService, Product } from '../types/Apagado_ProductTypes';
+import { ProductService } from "@services/Apagado_productsServices";
 import { Request, Response } from "express";
 
 

@@ -1,4 +1,4 @@
-import { IProductRepository, IProductService, Product } from "../types/ProductTypes";
+import { IProductRepository, IProductService, Product } from "../types/Apagado_ProductTypes";
 import { Query } from "../types/RepositoryTypes";
 
 export class ProductService implements IProductService {

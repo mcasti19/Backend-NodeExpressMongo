@@ -4,4 +4,4 @@ export * from './customerControllers';
 export * from './revenueControllers';
 export * from './rolesController';
 export * from './usersController';
-export * from './productController';
+// export * from './Apagado_productController';

@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { Product } from "../types/ProductTypes";
+import { Product } from "../types/Apagado_ProductTypes";
 
 const ProductSchema: Schema = new Schema<Product>(
   {

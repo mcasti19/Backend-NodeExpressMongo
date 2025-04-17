@@ -20,4 +20,4 @@ __exportStar(require("./Employee"), exports);
 __exportStar(require("./Revenue"), exports);
 __exportStar(require("./Roles"), exports);
 __exportStar(require("./Users"), exports);
-__exportStar(require("./Product"), exports);
+__exportStar(require("./Apagado_Product"), exports);

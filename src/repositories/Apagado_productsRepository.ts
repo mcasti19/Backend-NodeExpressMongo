@@ -1,6 +1,6 @@
 
-import { ProductModel } from "@models/Product";
-import { IProductRepository, Product } from "../types/ProductTypes";
+import { ProductModel } from "@models/Apagado_Product";
+import { IProductRepository, Product } from "../types/Apagado_ProductTypes";
 import { Query } from "../types/RepositoryTypes";
 
 export class ProductRepository implements IProductRepository {
