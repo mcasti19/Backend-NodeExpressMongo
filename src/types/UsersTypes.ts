@@ -12,7 +12,7 @@ export interface User extends Document {
   password: string;
   roles?: Roles[];
   permissions?: string[];
-  employeeId: ObjectId;
+  employeeId?: ObjectId;
   status: string;
   comparePassword(password: string): Promise<boolean>;
 }

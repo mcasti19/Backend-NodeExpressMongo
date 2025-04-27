@@ -51,7 +51,6 @@ export const verifyToken = async (req: Request, res: Response, next: NextFunctio
 }
 
 export const getPermission = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-
     const { currentUser, method, path } = req;
     const { roles } = currentUser;
 
@@ -63,6 +62,7 @@ export const getPermission = async (req: Request, res: Response, next: NextFunct
     if (!findMethod?.permissions.includes(`${currentModule}_${findMethod.scope}`)) {
         findMethod?.permissions.push(`${currentModule}_${findMethod.scope}`);
     }
+    
     console.log('findMethod :>>', findMethod);
 
     const mergeRolesPermissions = [ ...new Set(roles?.flatMap(x => x.permissions)) ];
